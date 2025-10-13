@@ -3,7 +3,7 @@ import "./style.css";
 
 document.body.innerHTML = `
   <p>Example image asset: <img src="${exampleIconUrl}" class="icon" /></p>
-  <p>HI I'M AEGIS HELLO :
+  <!-- <p>HI I'M AEGIS HELLO : -->
   <button class="dog button" type="button">🐕</button>
 </p>`;
 
