@@ -2,6 +2,7 @@ import exampleIconUrl from "./noun-paperclip-7598668-00449F.png";
 import "./style.css";
 
 let counter: number = 0;
+let zero = 0;
 
 document.body.innerHTML = `
                                   <!-- <p>Example image asset: <img src="${exampleIconUrl}" class="icon" /></p> -->
@@ -23,10 +24,15 @@ button.addEventListener("click", () => {
 });
 
 // Increment on Interval
-setInterval(incrementCounter, 1000);
+//setInterval(incrementCounter, 1000);
+requestAnimationFrame(firstFrame);
+function firstFrame(timestamp) {
+  zero = timestamp;
+  incrementCounter(timestamp);
+}
 
-function incrementCounter() {
-  counter++;
+function incrementCounter(timestamp) {
+  counter += (timestamp - zero) / 1000;
   counterElement.innerHTML = counter.toString() + " dogs";
 }
 
