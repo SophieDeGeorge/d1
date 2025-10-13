@@ -26,12 +26,12 @@ button.addEventListener("click", () => {
 // Increment on Interval
 //setInterval(incrementCounter, 1000);
 requestAnimationFrame(firstFrame);
-function firstFrame(timestamp) {
+function firstFrame(timestamp: number) {
   zero = timestamp;
   incrementCounter(timestamp);
 }
 
-function incrementCounter(timestamp) {
+function incrementCounter(timestamp: number) {
   counter += (timestamp - zero) / 1000;
   counterElement.innerHTML = counter.toString() + " dogs";
 }
