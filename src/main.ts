@@ -22,5 +22,13 @@ button.addEventListener("click", () => {
   console.log("Num: ", button, counterElement, counter);
 });
 
+// Increment on Interval
+setInterval(incrementCounter, 1000);
+
+function incrementCounter() {
+  counter++;
+  counterElement.innerHTML = counter.toString() + " dogs";
+}
+
 console.log("hi im aegis jr");
 console.log("hi im aegis sr");
