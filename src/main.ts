@@ -6,6 +6,7 @@ let zero = 0;
 let timeBetweenFrames = 0;
 let rateUpgrades = 0;
 let incrementRate = 0;
+let fps = 0;
 const oneSecond = 1000;
 
 document.body.innerHTML = `
@@ -38,6 +39,7 @@ rateUpButton.addEventListener("click", () => {
   rateUpgrades += 1;
   counter -= 10;
   increaseCounterBy(0);
+  fractionalIncrement();
 });
 
 function updateDogAmount() {
@@ -46,26 +48,24 @@ function updateDogAmount() {
 
 function checkDogAmount() {
   if (counter < 10) {
-    console.log("Disabled");
+    //console.log("Disabled");
     rateUpButton.disabled = true;
   } else {
-    console.log("Enabled");
+    //console.log("Enabled");
     rateUpButton.disabled = false;
   }
 }
 
 function increaseCounterBy(x: number) {
+  //console.log("Counter increased by: ", x);
   counter += x;
   updateDogAmount();
   checkDogAmount();
-  fractionalIncrement();
 }
 
 // Increment fractionally
 function fractionalIncrement() {
-  if (rateUpgrades > 0) {
-    requestAnimationFrame(firstFrame);
-  }
+  requestAnimationFrame(firstFrame);
 }
 
 function firstFrame(timestamp: number) {
@@ -75,7 +75,10 @@ function firstFrame(timestamp: number) {
 
 function incrementCounter(timestamp: number) {
   timeBetweenFrames = timestamp - zero;
+  fps = oneSecond / timeBetweenFrames;
   incrementRate = timeBetweenFrames / (oneSecond / rateUpgrades); //divide the miliseconds between frames by the result of 1000ms / rateUpgrades
+  console.log("Dogs per second: ", incrementRate * fps);
+  console.log("Frames per second: ", fps);
   increaseCounterBy(incrementRate);
   //counter += incrementRate;
 
