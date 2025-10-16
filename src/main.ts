@@ -23,8 +23,7 @@ button.addEventListener("click", () => {
   console.log("Num: ", button, counterElement, counter);
 });
 
-// Increment on Interval
-//setInterval(incrementCounter, 1000);
+// Increment fractionally
 requestAnimationFrame(firstFrame);
 function firstFrame(timestamp: number) {
   zero = timestamp;
@@ -33,8 +32,11 @@ function firstFrame(timestamp: number) {
 
 function incrementCounter(timestamp: number) {
   counter += (timestamp - zero) / 1000;
+                //console.log(timestamp - zero);
   counterElement.innerHTML = counter.toString() + " dogs";
+  zero = timestamp;
+  requestAnimationFrame(incrementCounter);
 }
 
-console.log("hi im aegis jr");
-console.log("hi im aegis sr");
+//console.log("hi im aegis jr");
+//console.log("hi im aegis sr");
