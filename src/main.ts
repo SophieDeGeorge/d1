@@ -6,19 +6,21 @@ let zero = 0;
 let deltaTime = 0;
 let rateUpgrades = 0;
 let incrementRate = 0;
-let fps = 0;
-const oneSecond = 1000;
+//let fps = 0;
+//const oneSecond = 1000;
 
 document.body.innerHTML = `
                                   <!-- <p>Example image asset: <img src="${exampleIconUrl}" class="icon" /></p> -->
                                   <!-- <p>HI I'M AEGIS HELLO : -->
   <p>Counter: <span id="counter">0</span></p>
   <button id="dog button">🐕</button>
-  <button id="rateUp" command="disabled">Upgrade Cost: 10 dogs</button>
+                                  <!-- <button id="rateUp" command="disabled">Upgrade Cost: 10 dogs</button> -->
   <div id="button-container"></div>
 
 
 </p>`;
+
+console.log("1");
 
 //Button container
 const buttonContainer = document.getElementById("button-container")!;
@@ -29,21 +31,32 @@ const counterElement = document.getElementById("counter")!;
 counterElement.innerHTML = counter.toFixed(2) + " dogs";
 
 //rateUp Button Click handler
+/*
 const rateUpButton = <HTMLInputElement> document.getElementById("rateUp")!;
 rateUpButton.disabled = true;
+*/
 
 //Dog Button Event Listener
 dogButton.addEventListener("click", () => {
   increaseCounterBy(1);
 });
+console.log("2");
 
 //rateUp Event listener
+/*
 rateUpButton.addEventListener("click", () => {
   rateUpgrades += 1;
   counter -= 10;
   increaseCounterBy(0);
   fractionalIncrement();
 });
+*/
+
+createNewUpgrade("Name", 10, 0.1);
+createNewUpgrade("Rate Up 2.0", 100, 2);
+createNewUpgrade("Rate Up 50.0", 1000, 0);
+fractionalIncrement();
+console.log("3");
 
 function updateDogAmount() {
   counterElement.innerHTML = counter.toFixed(2) + " dogs";
@@ -51,9 +64,9 @@ function updateDogAmount() {
 
 function checkDogAmount() {
   if (counter < 10) {
-    rateUpButton.disabled = true;
+    //rateUpButton.disabled = true;
   } else {
-    rateUpButton.disabled = false;
+    //rateUpButton.disabled = false;
   }
 }
 
@@ -74,30 +87,42 @@ function firstFrame(timestamp: number) {
 }
 
 function incrementCounter(timestamp: number) {
-  deltaTime = timestamp - zero;
-  fps = oneSecond / deltaTime;
-  incrementRate = deltaTime / (oneSecond / rateUpgrades); //divide the miliseconds between frames by the result of 1000ms / rateUpgrades
-  console.log("Dogs per second: ", incrementRate * fps);
-  console.log("Frames per second: ", fps);
+  deltaTime = (timestamp - zero) / 1000;
+  //fps = oneSecond / deltaTime;
+  incrementRate = deltaTime * rateUpgrades; //~0.004 seconds * rateUpgrades
+  //console.log("Dogs per second: ", incrementRate * fps);
+  //console.log("Frames per second: ", fps);
+
   increaseCounterBy(incrementRate);
 
   zero = timestamp;
   requestAnimationFrame(incrementCounter);
 }
 
-/*
 function createNewUpgrade(name: string, cost: number, rate: number) {
   //Click handler
+
   const newButton: HTMLButtonElement = document.createElement(name) as HTMLButtonElement;
+
   buttonContainer.appendChild(newButton);
+  console.log("4");
+
+  if (counter > cost) {
+    newButton.disabled = false;
+  } else {
+    newButton.disabled = true;
+  }
 
   newButton.addEventListener("click", () => {
-    //what the button do
+    //what the button dos
+    /*
     if (counter > cost) {
+      newButton.disabled = false;
 
+    } else {
+      newButton.disabled = true;
     }
-
+    */
+    rateUpgrades += rate;
   });
-
 }
-  */
