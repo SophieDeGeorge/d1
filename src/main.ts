@@ -52,11 +52,13 @@ rateUpButton.addEventListener("click", () => {
 });
 */
 
-createNewUpgrade("Name", 10, 0.1);
-createNewUpgrade("Rate Up 2.0", 100, 2);
-createNewUpgrade("Rate Up 50.0", 1000, 0);
-fractionalIncrement();
+createNewUpgrade("10 dogs = 0.1dogs/second", 10, 0.1);
 console.log("3");
+createNewUpgrade("100 dogs = 2.0dogs/second", 100, 2);
+console.log("7");
+createNewUpgrade("1000 dogs = 10.0dogs/second", 1000, 10);
+console.log("9");
+fractionalIncrement();
 
 function updateDogAmount() {
   counterElement.innerHTML = counter.toFixed(2) + " dogs";
@@ -99,30 +101,46 @@ function incrementCounter(timestamp: number) {
   requestAnimationFrame(incrementCounter);
 }
 
-function createNewUpgrade(name: string, cost: number, rate: number) {
+function createNewUpgrade(
+  name: string,
+  cost: number,
+  rate: number,
+) {
   //Click handler
 
-  const newButton: HTMLButtonElement = document.createElement(name) as HTMLButtonElement;
+  const newButton: HTMLButtonElement = document.createElement(
+    "button",
+  ) as HTMLButtonElement;
 
-  buttonContainer.appendChild(newButton);
+  newButton.innerHTML = name;
+
   console.log("4");
 
+  /*
   if (counter > cost) {
     newButton.disabled = false;
   } else {
-    newButton.disabled = true;
+    newButton.disabled = false;
   }
+  */
+  console.log("5");
 
   newButton.addEventListener("click", () => {
     //what the button dos
+
     /*
     if (counter > cost) {
       newButton.disabled = false;
-
     } else {
       newButton.disabled = true;
     }
     */
-    rateUpgrades += rate;
+
+    if (counter > cost) {
+      rateUpgrades += rate;
+      counter -= cost;
+    }
+    console.log("6");
   });
+  buttonContainer.appendChild(newButton);
 }
