@@ -34,9 +34,9 @@ dogButton.addEventListener("click", () => {
 });
 
 //Call function to create upgrades
-createNewUpgrade("10 dogs = 0.1 dogs/second", 10, 0.1);
-createNewUpgrade("100 dogs = 2.0 dogs/second", 100, 2);
-createNewUpgrade("1000 dogs = 10.0 dogs/second", 1000, 10);
+createNewUpgrade(" dogs = 0.1 dogs/second", 10, 0.1);
+createNewUpgrade(" dogs = 2.0 dogs/second", 100, 2);
+createNewUpgrade(" dogs = 10.0 dogs/second", 1000, 10);
 fractionalIncrement();
 
 //Updates the counter element with current counter value
@@ -78,7 +78,7 @@ function createNewUpgrade(
   const newButton: HTMLButtonElement = document.createElement(
     "button",
   ) as HTMLButtonElement;
-  newButton.innerHTML = name;
+  newButton.innerHTML = cost + name;
 
   //Event Listener
   newButton.addEventListener("click", () => {
@@ -89,8 +89,9 @@ function createNewUpgrade(
       numUpgrades += 1;
       rateDisplayElement.innerHTML = rateUpgrades.toFixed(2) +
         " dogs per second";
-      console.log("Changed rateDisplay, incrementRate = " + incrementRate);
       upgradesDisplayElement.innerHTML = numUpgrades + " upgrades purchased";
+      cost = cost * 1.15; //Price Increase
+      newButton.innerHTML = cost.toFixed(2) + name; //Change Displayed Price
     }
   });
   buttonContainer.appendChild(newButton);
