@@ -6,8 +6,6 @@ let deltaTime = 0;
 let rateUpgrades = 0;
 let incrementRate = 0;
 let numUpgrades = 0;
-//  <img src="portal.png" alt="">
-//<p><id="portal"><img src="${portalIMG}" class="icon" /></p>
 
 document.body.innerHTML = `
   <p>Safe Dogs: <span id="counter">0</span></p>
@@ -35,21 +33,6 @@ dogButton.addEventListener("click", () => {
   increaseCounterBy(1);
 });
 
-//Dog Portal Style
-//dogButton.style.width = "400px";
-//dogButton.style.height = "400px";
-//dogButton.style.fontSize = "200px";
-//dogButton.style.background = "none";
-//dogButton.style.border = "none";
-//dogButton.style.backgroundAttachment = portalIMG;
-
-//dogButton.style.transitionDuration = "0.4";
-//dogButton:hover {backgroundColor: "white";color: "white";}
-
-//Call function to create upgrades
-createNewUpgrade(" rescue dogs to save +0.1 dogs/second", 10, 0.1);
-createNewUpgrade(" tactical dogs to save +2.0 dogs/second", 100, 2);
-createNewUpgrade(" magic dogs to save +10.0 dogs/second", 1000, 10);
 fractionalIncrement();
 
 //Updates the counter element with current counter value
@@ -82,31 +65,40 @@ function incrementCounter(timestamp: number) {
   requestAnimationFrame(incrementCounter);
 }
 
-function createNewUpgrade(
-  name: string,
-  cost: number,
-  rate: number,
-) {
-  //Create Button
+interface Item {
+  name: string;
+  cost: number;
+  rate: number;
+}
+
+const availableItems: Item[] = [
+  { name: "Rescue Dogs", cost: 10, rate: 0.1 },
+  { name: "Tactical Dogs", cost: 100, rate: 2 },
+  { name: "Magic Dogs", cost: 1000, rate: 50 },
+];
+
+//Create Buttons forEach AvaliableItems Loop
+availableItems.forEach((element) => {
   const newButton: HTMLButtonElement = document.createElement(
     "button",
   ) as HTMLButtonElement;
   newButton.className = "upgrade-buttons";
-  newButton.innerHTML = "Send in " + cost + name;
+  newButton.innerHTML = "Send in " + element.cost + " " + element.name +
+    " (Saves " + element.rate + " dogs/sec)";
 
   //Event Listener
   newButton.addEventListener("click", () => {
-    if (counter >= cost) {
-      rateUpgrades += rate;
-      counter -= cost;
-      incrementRate += rate;
+    if (counter >= element.cost) {
+      rateUpgrades += element.rate;
+      counter -= element.cost;
+      incrementRate += element.rate;
       numUpgrades += 1;
       rateDisplayElement.innerHTML = rateUpgrades.toFixed(2) +
         " per second";
       upgradesDisplayElement.innerHTML = numUpgrades + " ";
-      cost = cost * 1.15; //Price Increase
-      newButton.innerHTML = "Send in " + cost.toFixed(2) + name; //Change Displayed Price
+      element.cost = element.cost * 1.15; //Price Increase
+      newButton.innerHTML = "Send in " + element.cost.toFixed(2) + element.name; //Change Displayed Price
     }
   });
   buttonContainer.appendChild(newButton);
-}
+});
