@@ -1,5 +1,21 @@
 .icon {
-  width: 64px;
-  vertical-align: top;
-  border: 1px solid salmon;
+  width: 256px;
+  vertical-align: middle;
+}
+
+.portal-button {
+  width: 400px;
+  height: 400px;
+  font-size: 100px;
+  background: none;
+  background-image: url("./portal.png");
+  background-repeat: no-repeat;
+  background-size: 400px 400px;
+  border: none;
+  opacity: 0.9;
+  text-align: center;
+}
+
+.portal-button:hover {
+  opacity: 1;
 }

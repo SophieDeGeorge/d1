@@ -6,12 +6,14 @@ let deltaTime = 0;
 let rateUpgrades = 0;
 let incrementRate = 0;
 let numUpgrades = 0;
+//  <img src="portal.png" alt="">
+//<p><id="portal"><img src="${portalIMG}" class="icon" /></p>
 
 document.body.innerHTML = `
   <p>Counter: <span id="counter">0</span></p>
   <p>RateDisplay: <span id="rateDisplay">0</span></p>
   <p>UpgradesDisplay: <span id="upgrades">0</span></p>
-  <button id="dog button">🐕</button>
+  <button id="dog button" button class="portal-button">🐕</button>
   <div id="button-container"></div>
 </p>`;
 
@@ -32,6 +34,17 @@ upgradesDisplayElement.innerHTML = numUpgrades + " upgrades purchased";
 dogButton.addEventListener("click", () => {
   increaseCounterBy(1);
 });
+
+//Dog Portal Style
+//dogButton.style.width = "400px";
+//dogButton.style.height = "400px";
+//dogButton.style.fontSize = "200px";
+//dogButton.style.background = "none";
+//dogButton.style.border = "none";
+//dogButton.style.backgroundAttachment = portalIMG;
+
+//dogButton.style.transitionDuration = "0.4";
+//dogButton:hover {backgroundColor: "white";color: "white";}
 
 //Call function to create upgrades
 createNewUpgrade(" dogs = 0.1 dogs/second", 10, 0.1);
