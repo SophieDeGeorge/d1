@@ -10,9 +10,9 @@ let numUpgrades = 0;
 //<p><id="portal"><img src="${portalIMG}" class="icon" /></p>
 
 document.body.innerHTML = `
-  <p>Counter: <span id="counter">0</span></p>
-  <p>RateDisplay: <span id="rateDisplay">0</span></p>
-  <p>UpgradesDisplay: <span id="upgrades">0</span></p>
+  <p>Safe Dogs: <span id="counter">0</span></p>
+  <p>Dogs Being Rescued: <span id="rateDisplay">0</span></p>
+  <p>Rescue Squads Sent Out: <span id="upgrades">0</span></p>
   <button id="dog button" button class="portal-button">🐕</button>
   <div id="button-container"></div>
 </p>`;
@@ -27,8 +27,8 @@ const rateDisplayElement = document.getElementById("rateDisplay")!;
 const upgradesDisplayElement = document.getElementById("upgrades")!;
 
 counterElement.innerHTML = counter.toFixed(2) + " dogs";
-rateDisplayElement.innerHTML = incrementRate + " dogs per second";
-upgradesDisplayElement.innerHTML = numUpgrades + " upgrades purchased";
+rateDisplayElement.innerHTML = incrementRate + " per second";
+upgradesDisplayElement.innerHTML = numUpgrades + "";
 
 //Dog Button Event Listener
 dogButton.addEventListener("click", () => {
@@ -47,9 +47,9 @@ dogButton.addEventListener("click", () => {
 //dogButton:hover {backgroundColor: "white";color: "white";}
 
 //Call function to create upgrades
-createNewUpgrade(" dogs = 0.1 dogs/second", 10, 0.1);
-createNewUpgrade(" dogs = 2.0 dogs/second", 100, 2);
-createNewUpgrade(" dogs = 10.0 dogs/second", 1000, 10);
+createNewUpgrade(" rescue dogs to save +0.1 dogs/second", 10, 0.1);
+createNewUpgrade(" tactical dogs to save +2.0 dogs/second", 100, 2);
+createNewUpgrade(" magic dogs to save +10.0 dogs/second", 1000, 10);
 fractionalIncrement();
 
 //Updates the counter element with current counter value
@@ -91,7 +91,8 @@ function createNewUpgrade(
   const newButton: HTMLButtonElement = document.createElement(
     "button",
   ) as HTMLButtonElement;
-  newButton.innerHTML = cost + name;
+  newButton.className = "upgrade-buttons";
+  newButton.innerHTML = "Send in " + cost + name;
 
   //Event Listener
   newButton.addEventListener("click", () => {
@@ -101,10 +102,10 @@ function createNewUpgrade(
       incrementRate += rate;
       numUpgrades += 1;
       rateDisplayElement.innerHTML = rateUpgrades.toFixed(2) +
-        " dogs per second";
-      upgradesDisplayElement.innerHTML = numUpgrades + " upgrades purchased";
+        " per second";
+      upgradesDisplayElement.innerHTML = numUpgrades + " ";
       cost = cost * 1.15; //Price Increase
-      newButton.innerHTML = cost.toFixed(2) + name; //Change Displayed Price
+      newButton.innerHTML = "Send in " + cost.toFixed(2) + name; //Change Displayed Price
     }
   });
   buttonContainer.appendChild(newButton);

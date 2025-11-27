@@ -10,7 +10,7 @@
   background: none;
   background-image: url("./portal.png");
   background-repeat: no-repeat;
-  background-size: 400px 400px;
+  background-size: contain;
   border: none;
   opacity: 0.9;
   text-align: center;
@@ -18,4 +18,15 @@
 
 .portal-button:hover {
   opacity: 1;
+}
+
+.upgrade-buttons {
+  width: 175px;
+  height: 175px;
+  padding-bottom: 140px;
+  background-image: url("./rescue_dog.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: bottom;
 }
