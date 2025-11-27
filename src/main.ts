@@ -69,12 +69,34 @@ interface Item {
   name: string;
   cost: number;
   rate: number;
+  description: string;
+  imageURL: string;
 }
 
 const availableItems: Item[] = [
-  { name: "Rescue Dogs", cost: 10, rate: 0.1 },
-  { name: "Tactical Dogs", cost: 100, rate: 2 },
-  { name: "Magic Dogs", cost: 1000, rate: 50 },
+  {
+    name: "Rescue Dogs",
+    cost: 10,
+    rate: 0.1,
+    description: "A team of trained interdimensional-rescue dogs!",
+    imageURL: "./rescue_dog.jpg",
+  },
+  {
+    name: "Tactical Dogs",
+    cost: 100,
+    rate: 2,
+    description:
+      "An elite unit of dogs, rigorously trained to find and save dogs across dimensions",
+    imageURL: "",
+  },
+  {
+    name: "Magic Dog",
+    cost: 1000,
+    rate: 50,
+    description:
+      "A kind old dog trained in the art of interdimensional teleportation, able to teleport dogs back to their home dimension",
+    imageURL: "",
+  },
 ];
 
 //Create Buttons forEach AvaliableItems Loop
