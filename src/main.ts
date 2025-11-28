@@ -1,4 +1,6 @@
+import rescueIMG from "./rescue_dog.jpg";
 import "./style.css";
+import tacticalIMG from "./tactical_dog.jpg"; //https://www.vecteezy.com/vector-art/65811103-dog-pet-in-space-suit-and-helmet-standing-on-the-moon-surface-illustration
 
 let counter: number = 0;
 let zero = 0;
@@ -79,7 +81,7 @@ const availableItems: Item[] = [
     cost: 10,
     rate: 0.1,
     description: "A team of trained interdimensional-rescue dogs!",
-    imageURL: "./rescue_dog.jpg",
+    imageURL: rescueIMG,
   },
   {
     name: "Tactical Dogs",
@@ -87,7 +89,7 @@ const availableItems: Item[] = [
     rate: 2,
     description:
       "An elite unit of dogs, rigorously trained to find and save dogs across dimensions",
-    imageURL: "",
+    imageURL: tacticalIMG,
   },
   {
     name: "Magic Dog",
@@ -104,6 +106,8 @@ availableItems.forEach((element) => {
   const newButton: HTMLButtonElement = document.createElement(
     "button",
   ) as HTMLButtonElement;
+  //newButton.style.backgroundImage = element.imageURL;
+  newButton.setAttribute("style", `background-image: url(${element.imageURL})`);
   newButton.className = "upgrade-buttons";
   newButton.innerHTML = "Send in " + element.cost + " " + element.name +
     " (Saves " + element.rate + " dogs/sec)";
