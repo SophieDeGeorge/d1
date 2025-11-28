@@ -3,6 +3,10 @@
   vertical-align: middle;
 }
 
+.top-info {
+  border: darkgoldenrod;
+}
+
 .portal-button {
   width: 400px;
   height: 400px;

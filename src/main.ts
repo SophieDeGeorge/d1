@@ -1,6 +1,9 @@
+import goddogIMG from "./god_dog.png";
+import magicIMG from "./magic_dog.png";
 import rescueIMG from "./rescue_dog.jpg";
 import "./style.css";
 import tacticalIMG from "./tactical_dog.jpg"; //https://www.vecteezy.com/vector-art/65811103-dog-pet-in-space-suit-and-helmet-standing-on-the-moon-surface-illustration
+import techIMG from "./tech_dog.png";
 
 let counter: number = 0;
 let zero = 0;
@@ -10,9 +13,18 @@ let incrementRate = 0;
 let numUpgrades = 0;
 
 document.body.innerHTML = `
-  <p>Safe Dogs: <span id="counter">0</span></p>
-  <p>Dogs Being Rescued: <span id="rateDisplay">0</span></p>
-  <p>Rescue Squads Sent Out: <span id="upgrades">0</span></p>
+  <p>
+    Safe Dogs:
+    <span id="counter">0</span>
+  </p>
+  <p>
+    Dogs Being Rescued:
+    <span id="rateDisplay" >0</span>
+  </p>
+    <p>Rescue Squads Sent Out:
+    <span id="upgrades" >0</span>
+  </p>
+  
   <button id="dog button" button class="portal-button">🐕</button>
   <div id="button-container"></div>
 </p>`;
@@ -101,7 +113,24 @@ const availableItems: Item[] = [
     description:
       "A kind old dog trained in the art of interdimensional teleportation, teleports dogs back to safety",
     buttonText: "Send in a magic dog",
-    imageURL: "",
+    imageURL: magicIMG,
+  },
+  {
+    name: "Genetically Engineered Dog",
+    cost: 5000,
+    rate: 200,
+    description:
+      "An experimental super-dog created with top secret tech, abilities classified",
+    buttonText: "Send in a genetically engineered dog",
+    imageURL: techIMG,
+  },
+  {
+    name: "GoddoG",
+    cost: 10000,
+    rate: 1000,
+    description: "An all powerful dog who has ascended to a higher plane",
+    buttonText: "Unleash the almighty God Dog",
+    imageURL: goddogIMG,
   },
 ];
 
