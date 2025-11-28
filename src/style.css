@@ -22,10 +22,10 @@
 
 .upgrade-buttons {
   width: 175px;
-  height: 175px;
-  padding-bottom: 140px;
+  height: 300px;
+  padding-bottom: 230px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position-x: center;
-  background-position-y: bottom;
+  background-position-y: center;
 }

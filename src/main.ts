@@ -72,6 +72,7 @@ interface Item {
   cost: number;
   rate: number;
   description: string;
+  buttonText: string;
   imageURL: string;
 }
 
@@ -81,6 +82,7 @@ const availableItems: Item[] = [
     cost: 10,
     rate: 0.1,
     description: "A team of trained interdimensional-rescue dogs!",
+    buttonText: "Send in rescue dogs!",
     imageURL: rescueIMG,
   },
   {
@@ -89,6 +91,7 @@ const availableItems: Item[] = [
     rate: 2,
     description:
       "An elite unit of dogs, rigorously trained to find and save dogs across dimensions",
+    buttonText: "Send in tactical dogs!",
     imageURL: tacticalIMG,
   },
   {
@@ -96,7 +99,8 @@ const availableItems: Item[] = [
     cost: 1000,
     rate: 50,
     description:
-      "A kind old dog trained in the art of interdimensional teleportation, able to teleport dogs back to their home dimension",
+      "A kind old dog trained in the art of interdimensional teleportation, teleports dogs back to safety",
+    buttonText: "Send in a magic dog",
     imageURL: "",
   },
 ];
@@ -109,8 +113,10 @@ availableItems.forEach((element) => {
   //newButton.style.backgroundImage = element.imageURL;
   newButton.setAttribute("style", `background-image: url(${element.imageURL})`);
   newButton.className = "upgrade-buttons";
-  newButton.innerHTML = "Send in " + element.cost + " " + element.name +
-    " (Saves " + element.rate + " dogs/sec)";
+  newButton.innerHTML = element.buttonText + "<br>Cost: " + element.cost +
+    "<br> (Saves " + element.rate +
+    " dogs/sec)<br><br><br><br><br><br><br><br><br><br><br><br>" +
+    element.description;
 
   //Event Listener
   newButton.addEventListener("click", () => {
@@ -123,7 +129,10 @@ availableItems.forEach((element) => {
         " per second";
       upgradesDisplayElement.innerHTML = numUpgrades + " ";
       element.cost = element.cost * 1.15; //Price Increase
-      newButton.innerHTML = "Send in " + element.cost.toFixed(2) + element.name; //Change Displayed Price
+      newButton.innerHTML = element.buttonText + "<br>Cost: " + element.cost +
+        "<br> (Saves " + element.rate +
+        " dogs/sec)<br><br><br><br><br><br><br><br><br><br><br><br>" +
+        element.description; //Change Displayed Price
     }
   });
   buttonContainer.appendChild(newButton);
