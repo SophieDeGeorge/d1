@@ -1,3 +1,5 @@
 # CMPM 121 D1 Project
 
-This is the starting point for your CMPM 121 D1 project. The goal of this project is to create a simple web application using TypeScript, Vite, and modern web development practices. Students should make sure to remove _this_ content from their README.md file and replace it with their own project documentation.
+An incremental cookie-clicker inspired game about saving dogs from other dimensions. Players click the portal to rescue dogs, and then can buy upgrades to automatically save dogs without any manual clicks. 
+
+Different upgrades can be easily added in the AvaliableItems array.
