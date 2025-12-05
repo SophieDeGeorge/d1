@@ -33,6 +33,7 @@ document.body.innerHTML = `
 </p>`;
 
 //////////////////////////////////// Information Display (Main button, dog counter, rate display, upgrade display) ///////////////////////////////////////////////////////////////
+
 const buttonContainer = document.getElementById("button-container")!;
 
 // Main Button Click handler

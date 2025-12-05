@@ -3,6 +3,22 @@
   vertical-align: middle;
 }
 
+/* Faded background inspired by thuynh26 <https://github.com/thuynh26/CMPM-121-f25-d1-TinaHuynh/tree/main> */
+body {
+  margin-top: 40px;
+  font-family: Elsie, serif;
+  text-align: center;
+  background: #f5bfc5;
+  background: #f5bfc5;
+  background: linear-gradient(
+    322deg,
+    rgb(173, 216, 249) 0%,
+    rgb(248, 198, 231) 35%,
+    rgb(213, 176, 255) 82%,
+    rgb(56, 58, 79) 98%
+  );
+}
+
 .top-info {
   border: darkgoldenrod;
 }
@@ -32,4 +48,9 @@
   background-repeat: no-repeat;
   background-position-x: center;
   background-position-y: center;
+  /* Button transparency and glowing border inspired by adegan1 <https://github.com/adegan1/cmpm121-incremental-andrewdegan> */
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 5px solid rgba(173, 216, 249, 0.349);
+  border-radius: 25px;
+  box-shadow: 0 0 50px rgba(24, 2, 49, 0.5);
 }
